@@ -3,91 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>線上算命系統 - 紫微斗數 八字 易經 六爻</title>
+    <title>線上算命系統 - 紫微斗數 八字 易經 奇門遁甲</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>🔮 線上算命系統</h1>
-            <p class="subtitle">紫微斗數 | 八字命理 | 易經六爻</p>
+            <p class="subtitle">紫微斗數 | 八字命理 | 易經六爻 | 奇門遁甲</p>
         </header>
 
         <main>
             <!-- 用戶輸入區域 -->
             <section class="input-section">
-                <h2>📝 請輸入您的基本資料</h2>
+                <div class="section-header">
+                    <div class="section-icon">📝</div>
+                    <div class="section-title">請輸入您的基本資料</div>
+                </div>
                 <form id="userForm">
-                    <div class="form-group">
-                        <label for="name">姓名：</label>
-                        <input type="text" id="name" required placeholder="請輸入姓名">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" required placeholder="請輸入您的姓名">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">性別</label>
+                            <select id="gender" required>
+                                <option value="">請選擇</option>
+                                <option value="male">男</option>
+                                <option value="female">女</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthDate">出生日期</label>
+                            <input type="date" id="birthDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthTime">出生時辰</label>
+                            <select id="birthTime" required>
+                                <option value="">請選擇時辰</option>
+                                <option value="0">子時 (23:00-01:00)</option>
+                                <option value="1">丑時 (01:00-03:00)</option>
+                                <option value="2">寅時 (03:00-05:00)</option>
+                                <option value="3">卯時 (05:00-07:00)</option>
+                                <option value="4">辰時 (07:00-09:00)</option>
+                                <option value="5">巳時 (09:00-11:00)</option>
+                                <option value="6">午時 (11:00-13:00)</option>
+                                <option value="7">未時 (13:00-15:00)</option>
+                                <option value="8">申時 (15:00-17:00)</option>
+                                <option value="9">酉時 (17:00-19:00)</option>
+                                <option value="10">戌時 (19:00-21:00)</option>
+                                <option value="11">亥時 (21:00-23:00)</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="gender">性別：</label>
-                        <select id="gender" required>
-                            <option value="">請選擇</option>
-                            <option value="male">男</option>
-                            <option value="female">女</option>
-                        </select>
+                        <label for="question">占卜問題（選填）</label>
+                        <textarea id="question" rows="3" placeholder="請輸入您想問的問題（用於易經六爻及奇門遁甲占卜）"></textarea>
                     </div>
 
-                    <div class="form-group">
-                        <label for="birthDate">出生日期：</label>
-                        <input type="date" id="birthDate" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="birthTime">出生時辰：</label>
-                        <select id="birthTime" required>
-                            <option value="">請選擇時辰</option>
-                            <option value="0">子時 (23:00-01:00)</option>
-                            <option value="1">丑時 (01:00-03:00)</option>
-                            <option value="2">寅時 (03:00-05:00)</option>
-                            <option value="3">卯時 (05:00-07:00)</option>
-                            <option value="4">辰時 (07:00-09:00)</option>
-                            <option value="5">巳時 (09:00-11:00)</option>
-                            <option value="6">午時 (11:00-13:00)</option>
-                            <option value="7">未時 (13:00-15:00)</option>
-                            <option value="8">申時 (15:00-17:00)</option>
-                            <option value="9">酉時 (17:00-19:00)</option>
-                            <option value="10">戌時 (19:00-21:00)</option>
-                            <option value="11">亥時 (21:00-23:00)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="question">占卜問題（選填）：</label>
-                        <textarea id="question" rows="3" placeholder="請輸入您想問的問題（用於易經六爻占卜）"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-primary">開始算命</button>
+                    <button type="submit" class="btn btn-primary">
+                        <span>🔥</span>
+                        <span>開始算命</span>
+                    </button>
                 </form>
             </section>
 
             <!-- 結果顯示區域 -->
             <section class="result-section" id="resultSection" style="display: none;">
-                <h2>🎯 您的命理分析</h2>
+                <div class="result-header">
+                    <h2>🎯 您的命理分析結果</h2>
+                    <p>以下是根據您的生辰八字進行的綜合命理分析</p>
+                </div>
 
                 <!-- 八字命理 -->
                 <div class="result-card">
-                    <h3>八字命理</h3>
+                    <h3>📜 八字命理</h3>
                     <div id="baziResult"></div>
                 </div>
 
                 <!-- 紫微斗數 -->
                 <div class="result-card">
-                    <h3>紫微斗數</h3>
+                    <h3>⭐ 紫微斗數</h3>
                     <div id="ziweiResult"></div>
                 </div>
 
                 <!-- 易經六爻 -->
                 <div class="result-card">
-                    <h3>易經六爻</h3>
+                    <h3>☯ 易經六爻</h3>
                     <div id="yijingResult"></div>
                 </div>
 
-                <button class="btn-secondary" onclick="resetForm()">重新算命</button>
+                <!-- 奇門遁甲 -->
+                <div class="result-card">
+                    <h3>🎴 奇門遁甲</h3>
+                    <div id="qimenResult"></div>
+                </div>
+
+                <button class="btn btn-secondary" onclick="resetForm()">
+                    <span>🔄</span>
+                    <span>重新算命</span>
+                </button>
             </section>
         </main>
 
@@ -99,6 +121,7 @@
     <script src="js/bazi.js"></script>
     <script src="js/ziwei.js"></script>
     <script src="js/yijing.js"></script>
+    <script src="js/qimen.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
